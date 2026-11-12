@@ -1,5 +1,5 @@
-import { DiscordLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { DiscordIcon } from "~/components/icons/discord-icon";
 import { Separator } from "~/components/ui/separator";
 import { env } from "~/env";
 
@@ -40,9 +40,9 @@ const Footer = () => {
               <h6>About Us</h6>
 
               <p className="mt-4 text-muted-foreground text-sm">
-                PayNow.gg Headless template - An integration of the PayNow.gg
-                Headless API built with Create T3 App, Next.js 15 and React 19
-                for kickstarting your next store.
+                MintSMP is a survival server built around a fair, grind-friendly
+                economy. Every purchase here keeps the server running and
+                supports new features, events and updates.
               </p>
             </div>
 
@@ -69,8 +69,8 @@ const Footer = () => {
               <h6>Contact Us</h6>
 
               <p className="mt-4 text-muted-foreground text-sm">
-                If you have any questions or need assistance, feel free to reach
-                out to us through our Discord server or via email.
+                Need help with an order or a rank? Open a ticket in our Discord
+                server and a staff member will get back to you.
               </p>
             </div>
           </div>
@@ -80,8 +80,12 @@ const Footer = () => {
           <div className="flex flex-col-reverse items-center justify-between gap-x-2 gap-y-5 px-6 py-8 sm:flex-row xl:px-0">
             <div className="flex flex-col">
               <span className="text-muted-foreground text-sm">
-                &copy; All Rights Reserved. Powered by&nbsp;
-                <Link href="https://paynow.gg" target="_blank">
+                &copy; MintSMP. All rights reserved. Powered by&nbsp;
+                <Link
+                  href="https://paynow.gg"
+                  target="_blank"
+                  className="text-primary hover:underline"
+                >
                   PayNow.gg.
                 </Link>
               </span>
@@ -89,7 +93,7 @@ const Footer = () => {
 
             <div className="flex items-center gap-5 text-muted-foreground">
               <Link href={env.NEXT_PUBLIC_DISCORD_INVITE_URL} target="_blank">
-                <DiscordLogoIcon className="h-5 w-5" />
+                <DiscordIcon className="h-5 w-5" />
               </Link>
             </div>
           </div>

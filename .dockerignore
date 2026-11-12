@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+README.md
+.next
+.git
+.husky
+
+# Never bake secrets into the image - they are passed at runtime by docker compose.
+.env
+.env.*
+!.env.example

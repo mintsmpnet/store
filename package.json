@@ -15,6 +15,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
     "@paynow-gg/paynow.js": "^1.0.2",
     "@paynow-gg/typescript-sdk": "^1.0.23",
     "@phosphor-icons/react": "^2.1.10",

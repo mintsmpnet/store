@@ -47,48 +47,49 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* MintSMP theme - palette shared with the in-game menus, LiteBans and the rest of the server. */
 :root {
   --radius: 0.65rem;
 
-  --background: #09090b;
-  --background-secondary: #8e51ff;
+  --background: #050b07;
+  --background-secondary: #5cba78;
 
-  --foreground: #fafafa;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.15);
-  --ring: #7f22fe;
+  --foreground: #f2fff5;
+  --border: rgba(194, 248, 200, 0.1);
+  --input: rgba(194, 248, 200, 0.14);
+  --ring: #5cba78;
 
-  --card: #18181b;
-  --card-foreground: #fafafa;
-  --popover: #18181b;
-  --popover-foreground: #fafafa;
+  --card: #0b150e;
+  --card-foreground: #f2fff5;
+  --popover: #0b150e;
+  --popover-foreground: #f2fff5;
 
-  --primary: #7f22fe;
-  --primary-foreground: #f5f3ff;
+  --primary: #5cba78;
+  --primary-foreground: #04120a;
 
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
-  --muted: #27272a;
-  --muted-foreground: #9f9fa9;
-  --accent: #27272a;
-  --accent-foreground: #fafafa;
+  --secondary: #12241a;
+  --secondary-foreground: #e6fbea;
+  --muted: #12241a;
+  --muted-foreground: #93ab9b;
+  --accent: #163222;
+  --accent-foreground: #c2f8c8;
 
-  --destructive: #f53b3e;
+  --destructive: #ff5c5c;
 
-  --chart-1: #1447e6;
-  --chart-2: #00bc7d;
-  --chart-3: #fe9a00;
-  --chart-4: #ad46ff;
-  --chart-5: #ff2056;
+  --chart-1: #5cba78;
+  --chart-2: #8fd9a0;
+  --chart-3: #ffd166;
+  --chart-4: #08fb7b;
+  --chart-5: #ff5c5c;
 
-  --sidebar: #18181b;
-  --sidebar-foreground: #fafafa;
-  --sidebar-primary: #7f22fe;
-  --sidebar-primary-foreground: #f5f3ff;
-  --sidebar-accent: #27272a;
-  --sidebar-accent-foreground: #fafafa;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #7f22fe;
+  --sidebar: #0b150e;
+  --sidebar-foreground: #f2fff5;
+  --sidebar-primary: #5cba78;
+  --sidebar-primary-foreground: #04120a;
+  --sidebar-accent: #163222;
+  --sidebar-accent-foreground: #c2f8c8;
+  --sidebar-border: rgba(194, 248, 200, 0.1);
+  --sidebar-ring: #5cba78;
 }
 
 @layer base {
@@ -96,13 +97,30 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    color-scheme: dark;
+    scrollbar-color: #1d3a29 var(--background);
+  }
+
   body {
     font-family: var(--font-montserrat), sans-serif;
 
-    color: white;
-    background-color: black;
+    color: var(--foreground);
+    background-color: var(--background);
+    /* a soft mint glow from the top of the page */
+    background-image: radial-gradient(
+      ellipse 80% 45% at 50% 0%,
+      rgba(92, 186, 120, 0.14),
+      transparent 70%
+    );
+    background-repeat: no-repeat;
 
     overscroll-behavior: none;
+  }
+
+  ::selection {
+    background: rgba(92, 186, 120, 0.35);
+    color: var(--foreground);
   }
 
   html body[data-scroll-locked] {

@@ -53,12 +53,12 @@ export default function ProductCard({ product, addToCart }: Props) {
 
         <CardContent className="grow">
           {product.pricing?.active_sale && (
-            <p className="font-semibold text-red-500 text-sm line-through sm:text-base">
+            <p className="font-semibold text-destructive text-sm line-through sm:text-base">
               {formatCents(product.pricing.price_original, product.currency)}
             </p>
           )}
 
-          <p className="font-semibold text-green-500 text-sm sm:text-base">
+          <p className="font-semibold text-primary text-sm sm:text-base">
             {formatCents(product.pricing?.price_final ?? 0, product.currency)}
           </p>
         </CardContent>

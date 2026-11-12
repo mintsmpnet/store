@@ -1,0 +1,39 @@
+# MintSMP store.
+#
+#   cp .env.example .env     # then fill it in (PAYNOW_API_KEY, store id, ...)
+#   docker compose up -d --build
+#
+# The site is then on http://localhost:${STORE_PORT:-3000}.
+services:
+  store:
+    container_name: mintsmp-store
+    image: mintsmp-store:latest
+    build:
+      context: .
+      # NEXT_PUBLIC_* values are compiled into the client bundle, so they are build args.
+      # Docker Compose fills them from .env; rebuild (--build) after changing any of them.
+      args:
+        NEXT_PUBLIC_BACKGROUND_IMAGE_URL: ${NEXT_PUBLIC_BACKGROUND_IMAGE_URL}
+        NEXT_PUBLIC_WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL:-http://localhost:3000}
+        NEXT_PUBLIC_PAYNOW_STORE_ID: ${NEXT_PUBLIC_PAYNOW_STORE_ID}
+        NEXT_PUBLIC_DISCORD_INVITE_URL: ${NEXT_PUBLIC_DISCORD_INVITE_URL}
+        NEXT_PUBLIC_GAMESERVER_CONNECTION_MESSAGE: ${NEXT_PUBLIC_GAMESERVER_CONNECTION_MESSAGE}
+    # Server-side settings (PAYNOW_API_KEY, GAMESERVER_*) are read at runtime only,
+    # so they never end up inside the image.
+    env_file:
+      - .env
+    ports:
+      - "${STORE_PORT:-4719}:4719"
+    restart: unless-stopped
+    healthcheck:
+      # The runtime image is distroless (no shell, curl or wget), so probe with node itself.
+      # Any HTTP response counts as up - a 5xx just means the PayNow settings need attention.
+      test:
+        - CMD
+        - /nodejs/bin/node
+        - -e
+        - "fetch('http://127.0.0.1:4719/').then(() => process.exit(0)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3

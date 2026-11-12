@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  DiscordLogoIcon,
   HouseIcon,
   ListIcon,
   ShoppingBagIcon,
@@ -9,6 +8,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { useState } from "react";
+import { DiscordIcon } from "~/components/icons/discord-icon";
 import { Button } from "~/components/ui/button";
 import {
   Sheet,
@@ -25,7 +25,7 @@ const navItems = [
   { href: "/", icon: HouseIcon, label: "Home" },
   {
     href: env.NEXT_PUBLIC_DISCORD_INVITE_URL,
-    icon: DiscordLogoIcon,
+    icon: DiscordIcon,
     label: "Discord",
   },
 ];

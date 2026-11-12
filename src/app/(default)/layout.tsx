@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  CopyIcon,
-  DiscordLogoIcon,
-  PlayIcon,
-} from "@phosphor-icons/react/dist/ssr";
+import { CopyIcon, PlayIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
@@ -13,9 +9,11 @@ import AuthDialog from "~/components/auth/auth-dialog";
 import CartSheet from "~/components/cart/cart-sheet";
 import PendingCartHandler from "~/components/cart/pending-cart-handler";
 import Footer from "~/components/footer/footer";
+import { DiscordIcon } from "~/components/icons/discord-icon";
 import GiftcardBalanceCard from "~/components/modules/giftcard-balance-card";
 import PaymentGoalCard from "~/components/modules/payment-goal-card";
 import RecentPaymentsCard from "~/components/modules/recent-payments-card";
+import SidebarNav from "~/components/navigation/sidebar-nav";
 import { env } from "~/env";
 import type Module from "~/server/api/types/paynow/module";
 import { api } from "~/trpc/react";
@@ -68,7 +66,7 @@ export default function DefaultLayout({
               backgroundImage: `url('${env.NEXT_PUBLIC_BACKGROUND_IMAGE_URL}')`,
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
           </div>
 
           <div className="relative z-10 flex min-h-screen flex-col">
@@ -133,7 +131,7 @@ export default function DefaultLayout({
                   >
                     <div className="hidden items-center gap-6 lg:flex">
                       <div className="relative w-min rounded-full bg-accent p-3">
-                        <DiscordLogoIcon weight="fill" height={36} width={36} />
+                        <DiscordIcon height={32} width={32} />
                       </div>
 
                       <div>
@@ -151,6 +149,10 @@ export default function DefaultLayout({
                 <div className="grid-cols-3 gap-6 space-y-6 p-4 md:grid xl:p-0">
                   <div className="col-span-1 space-y-6">
                     <AuthCard />
+
+                    <div className="hidden md:block">
+                      <SidebarNav />
+                    </div>
 
                     {paymentGoalModule && (
                       <PaymentGoalCard

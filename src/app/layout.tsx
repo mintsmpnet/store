@@ -12,11 +12,17 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
+export const viewport = {
+  themeColor: "#5cba78",
+};
+
 export async function generateMetadata() {
   const store = await api.paynow.getStore();
 
   return {
     title: store.name,
+    description:
+      "The official MintSMP store - ranks, crate keys and more. Support the server and unlock extra perks.",
   };
 }
 

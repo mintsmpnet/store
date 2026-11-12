@@ -56,6 +56,21 @@ After doing so, head to the [API Keys](https://dashboard.paynow.gg/api-keys) pag
 
 The API Key provided is your `PAYNOW_API_KEY` environment variable.
 
+### Running with Docker Compose
+
+The repo ships a `Dockerfile` and a `docker-compose.yml`, so the store can run without installing Node or pnpm:
+
+```bash
+cp .env.example .env        # fill in PAYNOW_API_KEY, your store id, Discord link, ...
+docker compose up -d --build
+```
+
+The site is then available on [http://localhost:3000](http://localhost:3000) (set `STORE_PORT` in `.env` to use another host port).
+
+- `NEXT_PUBLIC_*` variables are compiled into the site, so run `docker compose up -d --build` again after changing any of them.
+- `PAYNOW_API_KEY` and the `GAMESERVER_*` values are only read at runtime and are never baked into the image (`.env` is excluded by `.dockerignore`).
+- Logs: `docker compose logs -f store` - stop with `docker compose down`.
+
 ### Running the Development Server
 
 ```bash
@@ -66,7 +81,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the r
 
 ## Theming
 
-The website's color scheme is fully configurable by editing the CSS file located at `/src/styles/globals.css`
+The website's color scheme is fully configurable by editing the CSS file located at `/src/styles/globals.css`. This store uses the MintSMP palette (mint green `#5cba78` on a near-black green background, shared with the in-game menus); the block below is the stock template for reference.
 
 ```css
 :root {

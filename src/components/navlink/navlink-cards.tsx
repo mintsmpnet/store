@@ -12,9 +12,16 @@ export default function NavlinkCards() {
   }
 
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    // Two cards per row on desktop; an odd one out (the 3rd, 5th, ...) is centred on its own row.
+    // Each item takes half the row minus half the gap, so any number of categories still lines up.
+    <div className="flex flex-wrap justify-center gap-6">
       {navlinks.map((navlink) => (
-        <NavlinkCard key={navlink.node_id} navlink={navlink} />
+        <div
+          key={navlink.node_id}
+          className="w-full md:w-[calc(50%-0.75rem)] [&>a]:block"
+        >
+          <NavlinkCard navlink={navlink} />
+        </div>
       ))}
     </div>
   );
