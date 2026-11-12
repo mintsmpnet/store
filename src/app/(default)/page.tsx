@@ -16,7 +16,7 @@ export default function Home() {
       <Card>
         <CardHeader>
           <CardTitle className="inline-block font-extrabold text-3xl">
-            PayNow Store
+            MintSMP Store
           </CardTitle>
 
           <CardDescription className="hidden" />
@@ -25,13 +25,13 @@ export default function Home() {
         <CardContent className="space-y-5">
           <div className="font-light">
             <p>
-              From this page you can buy ranks and other perks to help support
-              the server.
+              Welcome to the official MintSMP store! Pick up ranks, crate keys
+              and more to support the server and unlock extra perks.
             </p>
 
             <p>
-              This store doesn't provide real rewards and is only a demo
-              template.
+              Log in with your Minecraft username to get started. All ranks are
+              permanent - pay once and keep it for good.
             </p>
           </div>
 
