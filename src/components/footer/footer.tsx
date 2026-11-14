@@ -89,6 +89,10 @@ const Footer = () => {
                   PayNow.gg.
                 </Link>
               </span>
+              <span className="mt-1 text-muted-foreground text-xs">
+                PayNow.gg is the Merchant of Record and reseller for all
+                purchases made on this store.
+              </span>
             </div>
 
             <div className="flex items-center gap-5 text-muted-foreground">
